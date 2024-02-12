@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Filter = ({ onSearchChange }) => {
-  const [searchText, setSearchText] = useState('');
+const Filter = ({ search, onSearchChange }) => {
+  const [searchText, setSearchText] = useState(search); // Initialize searchText with the search prop
+
+  useEffect(() => {
+    // Update searchText if the search prop changes
+    setSearchText(search);
+  }, [search]);
 
   const handleInputChange = (event) => {
     const newText = event.target.value;
